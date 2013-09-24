@@ -1,0 +1,113 @@
+{% load static from staticfiles %}
+{% load compress %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gergely Polonkai{% block title %}{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}" />
+        {% compress css %}
+        {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static "css/front.css" %}" media="screen" />
+        <link rel="stylesheet" type="text/css" href="{% static "css/blog.css" %}" media="screen" />
+        {% endblock %}
+        {% endcompress %}
+        <link rel="alternate" type="application/rss+xml" title="Gergely Polonkai's Blog - RSS Feed" href="{{ app.request.scheme }}://{{ app.request.host }}{% url 'blog:feed' %}" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="content-wrapper">
+            <div id="header" style="background-image: url('{% static "images/random_header.jpg" %}');">
+                <div id="picture">
+                    <img src="{% static "images/profile.png" %}" alt="" />
+                </div>
+                <h1><a href="{% url 'home' %}">Gergely Polonkai</a></h1>
+                <h2>developer, systems engineer and administrator</h2>
+                <div id="contact-list">
+                    <a href="mailto:gergely@polonkai.eu" target="_blank"><img src="{% static "images/email_16.png" %}" alt="E-mail" /></a>
+                    <a href="http://www.linkedin.com/in/gergelypolonkai" target="_blank"><img src="{% static "images/linkedin_16.png" %}" alt="LinkedIn profile" /></a>
+                    <a href="skype:w00dhun" target="_blank"><img src="{% static "images/skype_16.png" %}" alt="Skype" /></a>
+                    <a href="http://facebook.com/Polesz" target="_blank"><img src="{% static "images/facebook_16.png" %}" alt="Facebook profile" /></a>
+                    <a href="https://plus.google.com/u/1/105740970718293884702/about" target="_blank"><img src="{% static "images/google_plus_16.png" %}" alt="Google+ profile" /></a>
+                    <a href="gtalk:chat?jid=gergely@polonkai.eu" target="_blank"><img src="{% static "images/googletalk_16.png" %}" alt="Google Talk" /></a>
+                    <a href="http://twitter.com/W00d5t0ck" target="_blank"><img src="{% static "images/twitter_16.png" %}" alt="Twitter" /></a>
+                    <a href="http://tumblr.w00d5t0ck.info" target="_blank"><img src="{% static "images/tumblr_16.png" %}" alt="Tumblr" /></a>
+                    <a href="msnim:chat?contact=polesz@w00d5t0ck.info" target="_blank"><img src="{% static "images/windows_16.png" %}" alt="Windows Live" /></a>
+                    <a href="http://w00d5t0ck.deviantart.com" target="_blank"><img src="{% static "images/deviantart_16.png" %}" alt="deviantArt" /></a>
+                    <a href="{% url 'blog:feed' %}"><img src="{% static "images/rss_16.png" %}" alt="RSS Feed" /></a>
+                </div>
+            </div>
+            <div id="content-padding"></div>
+            <div id="menu">
+                <div id="tagcloud-button"><img alt="" src="{% static "images/tagcloud.png" %}" /></div>
+                <ul>
+                    <li {% if currentMenu == 'resume' %} class="active"{% endif %}><a href="{% url 'blog:resume' %}">Resume</a></li>
+                    <li {% if currentMenu == 'blog' %} class="active"{% endif %}><a href="{% url 'blog:index' %}">Blog</a></li>
+                    <li {% if currentMenu == 'about' %} class="active"{% endif %}><a href="{% url 'blog:about' %}">About me</a></li>
+                </ul>
+                <br class="clear" />
+            </div>
+{% if tagCloud|length > 0 %}
+            <div id="tag-cloud">
+{% for cloudItem in tagCloud %}
+                <a href="{% url 'blog_tag_list' cloudItem.name %}" class="size{{ cloudItem.size }}">{{ cloudItem.name }}</a>{% if not loop.last %} | {% endif %}
+{% endfor %}
+            </div>
+{% endif %}
+            <div id="content">
+{% block content %}{% endblock content %}
+            </div>
+        </div>
+        <div id="bottombar-wrapper">
+            <div id="bottombar-padding"></div>
+            <div id="bottombar"{% if app.environment == 'dev' %} style="bottom: 40px;"{% endif %}>
+                :: Copyright &copy; 2012, Gergely Polonkai :: <a href="{% url 'blog:disclaimer' %}">Disclaimer</a> ::
+            </div>
+        </div>
+        <a href="https://github.com/gergelypolonkai" id="github-ribbon" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png" alt="Fork me on GitHub"></a>
+        <iframe src="http://githubbadge.appspot.com/badge/gergelypolonkai?s=1&a=0" style="border: 0; height: 142px; width: 200px; overflow: hidden; display: none; position: absolute; top: 100px; left: 100px;" frameBorder="0" id="github-badge"></iframe>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.at-obfuscation').html('@');
+
+                $('#tagcloud-button').click(function() {
+                    $('#tag-cloud').toggle('slow');
+                });
+
+                $('#github-ribbon').mouseover(function() {
+                    $('#github-badge').fadeIn();
+                });
+
+                $('#github-ribbon').mouseout(function() {
+                    $('#github-badge').fadeOut();
+                });
+
+                $(document).mousemove(function(e) {
+                    $('#github-badge').css({
+                        top: e.pageY + 5,
+                        left: e.pageX + 5
+                    });
+                });
+            });
+
+            (function() {
+                var po = document.createElement('script');
+                po.type = 'text/javascript';
+                po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(po, s);
+            })();
+
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-43569023-1', 'polonkai.eu');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>

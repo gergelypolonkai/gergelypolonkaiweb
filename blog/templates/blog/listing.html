@@ -1,0 +1,11 @@
+{% extends "front_base.html" %}
+
+{% block content %}
+{% if posts %}
+{% for post in posts %}
+{{ post.title }}
+{% endfor %}
+{% else %}
+<p>No posts are returned for your query.</p>
+{% endif %}
+{% endblock %}
