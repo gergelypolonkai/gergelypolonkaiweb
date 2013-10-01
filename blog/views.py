@@ -21,11 +21,3 @@ def taglist(request, tag):
 def feed(request):
     return render(request, 'blog/feed.xml', {})
 
-def resume(request):
-    return render(request, 'resume.html', {})
-
-def about(request):
-    return renden(request, 'about.html', {})
-
-def disclaimer(request):
-    return renden(request, 'disclaimer.html', {})

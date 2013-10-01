@@ -6,7 +6,4 @@ urlpatterns = patterns('',
     url(r'^feed$',                                                      views.feed,    name='feed'),
     url(r'^tag/(?P<tag>.*)$',                                           views.taglist, name='taglist'),
     url(r'^(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<slug>[^/]+)$', views.read,    name='read'),
-    url(r'^resume',                                                     views.resume,  name='resume'),
-    url(r'^about',                                                      views.resume,  name='about'),
-    url(r'^disclaimer',                                                 views.resume,  name='disclaimer'),
 )
