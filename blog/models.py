@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 class Post(models.Model):
     user = models.ForeignKey(User)
@@ -8,6 +9,7 @@ class Post(models.Model):
     slug = models.CharField(max_length = 100)
     content = models.TextField()
     draft = models.BooleanField()
+    tags = TaggableManager()
 
     def __unicode__(self):
         return self.title

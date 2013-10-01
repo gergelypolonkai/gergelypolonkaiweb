@@ -10,6 +10,10 @@ def read(request, year, month, day, slug):
     post = get_object_or_404(Post, created_at__year=int(year), created_at__month=int(month), created_at__day=int(day), slug=slug);
     return render(request, 'blog/view.html', {'post': post})
 
+def taglist(request, tag):
+    posts = Post.objects.filter(tags__slug=tag)
+    return render(request, 'blog/listing.html', {'posts': posts})
+
 def feed(request):
     return render(request, 'blog/feed.xml', {})
 
