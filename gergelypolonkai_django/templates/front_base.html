@@ -48,10 +48,10 @@
                 </ul>
                 <br class="clear" />
             </div>
-{% if tagCloud|length > 0 %}
+{% if tagcloud|length > 0 %}
             <div id="tag-cloud">
-{% for cloudItem in tagCloud %}
-                <a href="{% url 'blog_tag_list' cloudItem.name %}" class="size{{ cloudItem.size }}">{{ cloudItem.name }}</a>{% if not loop.last %} | {% endif %}
+{% for cloudItem in tagcloud %}
+                <a href="{% url 'blog:taglist' cloudItem.slug %}" class="size{{ cloudItem.size }}">{{ cloudItem.name }}</a>{% if not loop.last %} | {% endif %}
 {% endfor %}
             </div>
 {% endif %}
