@@ -2,6 +2,13 @@ from django.db.models import Count
 from taggit.models import Tag
 from math import floor
 from operator import itemgetter
+from django.conf import settings
+import os
+from random import choice
+
+def randomheader(request):
+    header_file = choice(filter(lambda x: os.path.isfile(settings.HEADER_DIR + os.path.sep + x), os.listdir(settings.HEADER_DIR)))
+    return {'header': header_file}
 
 def tagcloud(request):
     tagcloudlist = Tag.objects.annotate(ct=Count('taggit_taggeditem_items')).order_by('-ct')

@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'blog',
+    'basics',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -170,5 +171,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
-    'gergelypolonkai_django.taghelper.tagcloud',
+    'gergelypolonkai_django.helper.tagcloud',
+    'gergelypolonkai_django.helper.randomheader',
 )
+
+HEADER_DIR = SITE_ROOT + os.path.sep + "static" + os.path.sep + "images" + os.path.sep + "header"
