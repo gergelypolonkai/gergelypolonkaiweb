@@ -1,6 +1,6 @@
 import os, os.path
 
-# Django settings for gergelypolonkai_django project.
+# Django settings for gergelypolonkaiweb project.
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 DEBUG = True
@@ -106,10 +106,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'gergelypolonkai_django.urls'
+ROOT_URLCONF = 'gergelypolonkaiweb.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'gergelypolonkai_django.wsgi.application'
+WSGI_APPLICATION = 'gergelypolonkaiweb.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -171,8 +171,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
-    'gergelypolonkai_django.helper.tagcloud',
-    'gergelypolonkai_django.helper.randomheader',
+    'gergelypolonkaiweb.helper.tagcloud',
+    'gergelypolonkaiweb.helper.randomheader',
 )
 
 HEADER_DIR = SITE_ROOT + os.path.sep + "static" + os.path.sep + "images" + os.path.sep + "header"
