@@ -4,8 +4,7 @@ from blog.models import Post
 
 def index(request):
     last_posts = Post.objects.order_by('-created_at')[:5]
-    context = { 'posts': last_posts }
-    return render(request, 'blog/listing.html', context)
+    return render(request, 'blog/listing.html', {'posts': last_posts})
 
 def read(request, year, month, day, slug):
     post = get_object_or_404(Post, created_at__year=int(year), created_at__month=int(month), created_at__day=int(day), slug=slug);

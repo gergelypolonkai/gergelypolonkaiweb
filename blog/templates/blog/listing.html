@@ -3,7 +3,9 @@
 {% block content %}
 {% if posts %}
 {% for post in posts %}
-{{ post.title }}
+{% with title_links=True %}
+{% include 'blog/post.html' %}
+{% endwith %}
 {% endfor %}
 {% else %}
 <p>No posts are returned for your query.</p>
