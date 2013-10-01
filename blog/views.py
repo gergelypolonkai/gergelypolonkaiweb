@@ -2,8 +2,12 @@ import datetime
 from django.shortcuts import render, get_object_or_404
 from blog.models import Post
 
-def index(request):
+def mainpage(request):
     last_posts = Post.objects.order_by('-created_at')[:5]
+    return render(request, 'blog/listing.html', {'posts': last_posts})
+
+def index(request):
+    last_posts = Post.objects.order_by('-created_at')
     return render(request, 'blog/listing.html', {'posts': last_posts})
 
 def read(request, year, month, day, slug):

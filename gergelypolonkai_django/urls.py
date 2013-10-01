@@ -5,7 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'blog.views.index', name='home'),
+    url(r'^$', 'blog.views.mainpage', name='home'),
     # url(r'^$', 'gergelypolonkai_django.views.home', name='home'),
     url(r'^blog/', include('blog.urls', namespace='blog')),
 
