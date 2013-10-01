@@ -1,6 +1,7 @@
 from django.db.models import Count
 from taggit.models import Tag
 from math import floor
+from operator import itemgetter
 
 def tagcloud(request):
     tagcloudlist = Tag.objects.annotate(ct=Count('taggit_taggeditem_items')).order_by('-ct')
@@ -21,6 +22,6 @@ def tagcloud(request):
             size = int(floor((5.0 * (tagcount - tmin)) / (tmax - tmin)))
             tagcloud.append({'name': cloudelement.name, 'slug': cloudelement.slug, 'size': size})
 
-    tagcloud.sort(key=lambda k: k['name'])
+    tagcloud.sort(key=itemgetter('name'))
 
     return {'tagcloud': tagcloud}
