@@ -7,5 +7,6 @@ urlpatterns = patterns('',
     url(r'^tag/(?P<tag>[^/]+)$',                                        views.taglist,   name='taglist'),
     url(r'^tag/(?P<tag>[^/]+)/page/(?P<page>\d+)$',                     views.tagpage,   name='tagpage'),
     url(r'^(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<slug>[^/]+)$', views.read,      name='read'),
+    url(r'^code-chunk/(?P<language>[^/]+)/(?P<slug>[^/]+)$',            views.codechunk, name='codechunk'),
     url(r'^feed$',                                                      views.feed,      name='feed'),
 )

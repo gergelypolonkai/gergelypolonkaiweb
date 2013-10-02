@@ -1,0 +1,15 @@
+{% extends 'front_base.html' %}
+
+{% load code_chunks %}
+
+{% block content %}
+<div class="code-chunk">
+    <p class="code-title">{{ codechunk.title }}</p>
+    {{ codechunk.content|syhilite:codechunk.language }}
+    {% if codechunk.description %}
+    <div class="code-description">
+        {{ codechunk.description|safe }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
