@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from django.contrib.sites.models import get_current_site
+from django.http import HttpResponse
+
+def googlevalidator(request):
+    return HttpResponse('')
 
 def resume(request):
     return render(request, 'basics/resume.html', { 'site': get_current_site(request) })
