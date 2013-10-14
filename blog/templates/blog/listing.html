@@ -2,11 +2,13 @@
 
 {% block content %}
 {% if posts %}
+{% include 'paginator.html' with list=posts %}
 {% for post in posts %}
 {% with title_links=True %}
 {% include 'blog/post.html' %}
 {% endwith %}
 {% endfor %}
+{% include 'paginator.html' with list=posts %}
 {% else %}
 <p>No posts are returned for your query.</p>
 {% endif %}
