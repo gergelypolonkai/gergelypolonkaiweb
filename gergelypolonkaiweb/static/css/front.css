@@ -188,6 +188,10 @@ dd p {
 	text-decoration: underline;
 }
 
+#bottombar img {
+    vertical-align: middle;
+}
+
 #more-posts {
     margin-top: 1em;
     text-align: right;
