@@ -1,0 +1,26 @@
+#keywords-button {
+    font-size: 50%;
+    color: #7f7f7f;
+    font-weight: normal;
+}
+
+#keywords-button:hover {
+    background-color: #4d4d4d;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#keywords {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 75%;
+    background-color: #7f7f7f;
+    color: #ffffff;
+    text-align: justify;
+    width: 50%;
+    padding: .5em;
+    border: 1px solid #f18137;
+    display: none;
+}
+

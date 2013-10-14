@@ -1,0 +1,72 @@
+{% extends 'front_base.html' %}
+
+{% block title %} - Resume{% endblock %}
+
+{% block content %}
+<h3>Resume <span id="keywords-button">[ want some keywords only? click this! ]</span></h3>
+
+<div itemscope itemtype="http://schema.org/Person">
+    <p>I am <strong itemprop="name">Gergely Polonkai</strong> (sometimes referred to as <span itemprop="nickname">W00d5t0ck</span> or <span itemprop="nickname">Polesz</span>), a <strong itemprop="jobTitle">software developer, systems engineer and administrator</strong>. I was born on <strong itemprop="birthDate">7 March, 1983</strong> in Budapest, Hungary. I spent my life moving here-and-there in the country, and finally settled in <strong itemprop="address" itemscope itemtype="http://schema.org/Address"><span itemprop="locality">Tura</span></strong>. Although I have already found my mate for life, I am <strong>single</strong> yet (living in a common-law marriage), being the proud father of a son.</p>
+    <p>You can reach me on <strong itemprop="email">gergely<span class="at-obfuscation"></span>polonkai.eu</strong>, or by phone on <strong itemprop="telephone">+36 (30) 7375-706</strong>. I fluently speak and write <strong>English</strong> and <strong>Hungarian</strong>.</p>
+    <p>I have <strong>graduated in 2001</strong> from <em>Táncsics Mihály Szakközépiskola, Szakiskola és Kollégium</em>, an architecture high school based in Veszprém, Hungary. There, I learned about <strong>electricity and elevators</strong>, while getting my feet wet in the area of systems engineering. Together with some teachers, we developed <strong class="keyword" title="network building">the IT infrastructure of the school, building it from scratch</strong> with <strong class="keyword">Windows XP</strong> based clients, and <strong class="keyword">Debian GNU/Linux</strong> servers with <strong class="keyword">Squid proxy</strong>, an <strong class="keyword">Apache httpd</strong> web server, <strong class="keyword">Exim</strong>+<strong class="keyword">Courier IMAP</strong> based internal mailing and a <strong class="keyword">Samba file server</strong>. Meanwhile, I have created the school’s first <strong class="keyword" title="web development">web page</strong> using <strong class="keyword">Perl CGI</strong>, and it’s replacement later in <strong class="keyword">PHP</strong>. Although I did that as a student, I consider it as my first job. You can contact <strong>Imre Pataki</strong> on +36 (20) 970-5830 if you need more information.</p>
+    <p>My first contract was made in <strong>2002</strong> with <strong>GaTeS Group Kft.</strong>, a Budapest based <strong>ISP</strong> that served Internet connection to a large warren. I have mastered Linux based <strong class="keyword" title="firewalls">firewalling and routing</strong> there using <strong class="keyword noupper">iptables</strong>, and <strong class="keyword" title="QoS">tc for QoS</strong>. I have also created a <strong>web page</strong> for the company using <strong class="keyword">PHP</strong> and <strong class="keyword" title="MySQL database development">MySQL</strong>. My only contact for this company was Ákos Szabó, whose phone number is not working any more.</p>
+    <p>After that, I contracted with <strong>Webvilág Kft.</strong> in <strong>2004</strong>. It was a <strong>web development company</strong>, where I was in the role of both a <strong class="keyword" title="web development">web developer</strong> and a <strong class="keyword" title="Systems administration">systems administrator</strong>. I have mastered <strong class="keyword">PHP</strong> there, together with <strong class="keyword">MySQL administration</strong>. I also built a small <strong class="keyword" title="routers">router</strong>/<strong class="keyword" title="firewalls">firewall</strong> out of a PC for office needs. Althogh the company has changed its name to Fejlesztők Háza Kft., you may still contact <strong>Péter Bali</strong> on +36 (70) 318-4050.</p>
+    <p>My next job came in <strong>2006</strong>, when I contracted with <strong>eWorldCom Kft.</strong>, a small <strong>VoIP company</strong>, developing call center software based on <strong class="keyword">Asterisk</strong>. My job was to create a small base system for this software, while managing the old, Ubuntu based ones. For the new version, we targeted <strong class="keyword">Gentoo Linux</strong> because of its possible small size, and performance issues. The company since then fusioned with Virtual Call Center Kft. You may reach my ex-bosses there, altough I don’t know any of their new contacts.</p>
+    <p>The job that followed was with <strong>Lufthansa Systems Hungary</strong> in <strong>2007</strong>, where I became the member of a large team supporting and administering several thousand servers, mostly based on <strong class="keyword">Red Hat Enterprise Linux</strong> and <strong class="keyword">SUSE Enterprise Linux</strong>. There I mastered cluster technologies (<strong class="keyword">Heartbeat 2</strong> and <strong class="keyword">Red Hat Cluster</strong>); <strong class="keyword">SAN</strong>, <strong class="keyword noupper">iSCSI</strong> and <strong class="keyword">NFS</strong> based storages; <strong class="keyword">Apache httpd</strong> and <strong class="keyword">Tomcat</strong> web servers; administration of <strong class="keyword" title="MySQL administration">MySQL</strong> and <strong class="keyword" title="Oracle 10g Database Administration">Oracle 10g Database</strong>s; <strong class="keyword">Bacula</strong> based backup; <strong class="keyword">Windows 2003 Server</strong> and <strong class="keyword">Windows Server 2008</strong> (both standalone and cluster) with <strong class="keyword">Active Directory</strong>, <strong class="keyword">Group Policy</strong>, <strong class="keyword">Microsoft Exchange Server 2005</strong> and <strong class="keyword">Microsoft SQL Server 2005</strong>; <strong class="keyword">Xen Open Source</strong> virtualization; <strong class="keyword">Citrix XenServer</strong> and <strong class="keyword" title="Citrix XenApp">XenApp</strong>; <strong class="keyword">VMware ESXi</strong> and <strong class="keyword" title="VMware vSphere">vSphere</strong>; <strong class="keyword">Nagios</strong> monitoring (and <strong class="keyword">monitoring</strong> in general); and last, but not least, <strong class="keyword">Linux hardening</strong> (<strong class="keyword">SELinux</strong>, firewalls of different kinds, fighting <strong class="keyword">application security</strong> issues). My boss was <strong>László Kiss-Kalló</strong> there, who can be reached on +36 (30) 429-9483.</p>
+    <p>All this knowledge came in very handy, when I went to <strong>Brokernet Group Zrt.</strong> in <strong>2010</strong>. The IT infrastructure was in a very bad shape there, and our job was to rebuild most of it from scratch. We utilized <strong class="keyword">Debian GNU/Linux</strong> servers (both standalone and <strong class="keyword">Heartbeat 2</strong> clusters), <strong class="keyword">Apache httpd</strong> web servers, <strong class="keyword">Exim</strong>+<strong class="keyword">Courier IMAP</strong> for mailing, <strong class="keyword">Bacula</strong> based backup, <strong class="keyword" title="MySQL administration">MySQL</strong> and <strong class="keyword" title="PostgreSQL administration">PostgreSQL</strong> database servers, <strong>Oracle Database</strong>s (both <span class="keyword" title="Oracle 10g Database Administration">10g</span> and <span class="keyword" title="Oracle 11g Database Administration">11g</span>), <strong>Microsoft SQL Server</strong>s (both <span class="keyword" title="Microsoft SQL Server 2005">2005</span> and <span class="keyword" title="Microsoft SQL Server 2008">2008</span>), <strong class="keyword">Windows 2003 Server</strong> and <strong class="keyword">Windows Server 2008</strong> (both standalone and clusters), <strong class="keyword">Active Directory</strong>, <strong class="keyword">Group Policy</strong>, centralised <strong class="keyword">ESET NOD32 antivirus</strong>, <strong class="keyword">Windows cluster</strong> based <strong class="keyword" title="Microsoft File Server">file server with AD backend</strong>, <strong class="keyword">WSUS</strong>, <strong class="keyword">OTRS::ITSM</strong> helpdesk, <strong class="keyword">Zabbix</strong> based monitoring, virtualization with <strong class="keyword">Citrix XenServer</strong>, IT security solutions with <strong class="keyword">SonicWall</strong> appliances, <strong class="keyword">SELinux</strong>, <strong class="keyword">Snort</strong> and <strong class="keyword noupper">iptables</strong>, <strong class="keyword">Perl</strong> for system administration scripts, and <strong class="keyword">PHP</strong> and the <strong class="keyword">Symfony 2</strong> framework for internal web development. Although much has changed in this list since then, it was my best experience so far. You can contact <strong>Attila Balogh</strong> on +36 (30) 924-8179.</p>
+    <p>Since I left the company in <strong>2013</strong>, I am working as a <strong>freelancer deloper</strong> and a <strong>systems engeneer</strong> for a <strong>startup network monitoring company</strong>. Here we are building a help desk system using open source products like <strong class="keyword">OTRS::ITSM</strong>, <strong class="keyword">OpenLDAP</strong>, </p>
+    <p>In my <strong>free time</strong>, I wander in forests, take pictures, and sometimes manipulate them with the <strong class="keyword">GIMP</strong>. Sometimes I write short novels using <strong class="keyword">LibreOffice</strong>. I am also developing some software in <strong class="keyword">C</strong>. When I’m not in the mood for writing, I go and check out the news on several technical areas, mostly IT and engineering, or give a try to a new programming language in the name of “why not?”. Currently I’m experimenting with Python.</p>
+    <p>Although I don’t plan to change my workplace right now, but when I do so, I look for firms that can develop my skills and give me financial stability through an interesting job.</p>
+</div>
+
+<div id="keywords"></div>
+<div id="page-disclaimer">You can download the latest version of my resume at <a href="http://{{ site.domain }}{% url "basics:resume" %}">http://{{ site.domain }}{% url "basics:resume" %}</a>.</div>
+
+<script type="text/javascript">
+Array.prototype.unique = function() {
+    var unique = [];
+
+    for (var i = 0; i < this.length; i++) {
+        if (unique.indexOf(this[i]) == -1) {
+            unique.push(this[i]);
+        }
+    }
+
+    return unique;
+};
+
+keyword_tags = $('.keyword');
+keywords = new Array();
+
+for (i = 0; i < keyword_tags.length; i++) {
+    tag = keyword_tags[i];
+
+    if ($(tag).attr('title')) {
+        kw = $(tag).attr('title');
+    } else {
+        kw = $(tag).html();
+    }
+
+    if (!$(tag).hasClass('noupper')) {
+        kw = kw.charAt(0).toUpperCase() + kw.slice(1);
+    }
+
+    keywords.push(kw);
+
+}
+
+$('#keywords').html(keywords.unique().sort(function(a, b) { if (a.toLowerCase() < b.toLowerCase()) return -1; else if (a.toLowerCase() > b.toLowerCase()) return 1; else return 0; }).join(', '));
+
+$('#keywords-button').click(function(e) {
+    $('#keywords').css({
+        top: e.pageY - 10,
+        left: e.pageX - 10
+    });
+    $('#keywords').fadeIn();
+});
+
+$('#keywords').mouseout(function() {
+    $('#keywords').fadeOut();
+});
+</script>
+{% endblock content %}
