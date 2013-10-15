@@ -32,3 +32,8 @@ def tagcloud(request):
     tagcloud.sort(key=itemgetter('name'))
 
     return {'tagcloud': tagcloud}
+
+def viewname(request):
+    return {
+        'view_name': request.view_name,
+    }

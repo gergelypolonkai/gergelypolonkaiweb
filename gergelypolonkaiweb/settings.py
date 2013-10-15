@@ -104,6 +104,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'gergelypolonkaiweb.middleware.viewname.ViewNameMiddleware',
 )
 
 ROOT_URLCONF = 'gergelypolonkaiweb.urls'
@@ -173,6 +174,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
     'gergelypolonkaiweb.helper.tagcloud',
     'gergelypolonkaiweb.helper.randomheader',
+    'gergelypolonkaiweb.helper.viewname',
 )
 
 HEADER_DIR = SITE_ROOT + os.path.sep + "static" + os.path.sep + "images" + os.path.sep + "header"

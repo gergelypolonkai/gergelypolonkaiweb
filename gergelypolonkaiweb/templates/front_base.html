@@ -43,9 +43,9 @@
             <div id="menu">
                 <div id="tagcloud-button"><img alt="" src="{% static "images/tagcloud.png" %}" /></div>
                 <ul>
-                    <li {% if currentMenu == 'resume' %} class="active"{% endif %}><a href="{% url 'basics:resume' %}">Resume</a></li>
-                    <li {% if currentMenu == 'blog' %} class="active"{% endif %}><a href="{% url 'blog:index' %}">Blog</a></li>
-                    <li {% if currentMenu == 'about' %} class="active"{% endif %}><a href="{% url 'basics:about' %}">About me</a></li>
+                    <li {% if view_name|slice:"-7:" == ".resume" %} class="active"{% endif %}><a href="{% url 'basics:resume' %}">Resume</a></li>
+                    <li {% if view_name|slice:":5" == "blog." %} class="active"{% endif %}><a href="{% url 'blog:index' %}">Blog</a></li>
+                    <li {% if view_name|slice:"-6:" == ".about" %} class="active"{% endif %}><a href="{% url 'basics:about' %}">About me</a></li>
                 </ul>
                 <br class="clear" />
             </div>
