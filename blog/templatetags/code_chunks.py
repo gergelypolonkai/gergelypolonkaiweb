@@ -30,6 +30,39 @@ def hilite(language, code):
 
 @register.filter(needs_autoescape=True)
 @stringfilter
+def remove_code_chunks(value, autoescape=None):
+    p = re.compile('\[\$ code:(?P<lang>[^:]+):(?P<slug>[^ ]+) \$\]')
+    i = p.finditer(value)
+    diff = 0
+
+    for match in i:
+        end, start = match.span()
+        oldlen = start - end
+        start += diff
+        end += diff
+        newstr = ""
+        newlen = len(newstr)
+        value = value[:end] + newstr + value[start:]
+        diff += newlen - oldlen
+
+    p = re.compile('\[\$ code:(?P<lang>[^:]+):(?P<code>.+?) \$\]', re.DOTALL)
+    i = p.finditer(value)
+    diff = 0
+
+    for match in i:
+        end, start = match.span()
+        oldlen = start - end
+        start += diff
+        end += diff
+        newstr = ""
+        newlen = len(newstr)
+        value = value[:end] + newstr + value[start:]
+        diff += newlen - oldlen
+
+    return mark_safe(value)
+
+@register.filter(needs_autoescape=True)
+@stringfilter
 def insert_code_chunks(value, autoescape=None):
     p = re.compile('\[\$ code:(?P<lang>[^:]+):(?P<slug>[^ ]+) \$\]')
     i = p.finditer(value)
