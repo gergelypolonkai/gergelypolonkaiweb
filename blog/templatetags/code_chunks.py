@@ -22,15 +22,17 @@ class CodeFormatter(HtmlFormatter):
             yield i, t
         yield 0, "</ol></pre>"
 
+def hilite(language, code):
+    lexer = get_lexer_by_name(language)
+    formatter = CodeFormatter(style = SolarizedDarkStyle, linenos = False, cssclass = language + " code", noclasses = True)
+    return highlight(code, lexer, formatter)
+
 @register.filter(needs_autoescape=True)
 @stringfilter
 def syhilite(value, language, autoescape=None):
     if language == "php":
         value = "<?php\n" + value
 
-    lexer = get_lexer_by_name(language)
-    formatter = CodeFormatter(style = SolarizedDarkStyle, linenos = False, cssclass = language + " code", noclasses = True)
-    html = highlight(value, lexer, formatter)
-    css = formatter.get_style_defs(['.code-chunk .code'])
+    html = hilite(language, value)
     return mark_safe(html)
 
