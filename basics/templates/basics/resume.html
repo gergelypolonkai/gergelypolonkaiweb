@@ -1,9 +1,9 @@
-{% extends 'front_base.html' %}
+{% extends pdf|yesno:'resume_pdf.html,front_base.html' %}
 
 {% block title %} - Resume{% endblock %}
 
 {% block content %}
-<h3>Resume <span id="keywords-button">[ want some keywords only? click this! ]</span></h3>
+<h3>Resume{% if not pdf %} <span id="keywords-button">[ want some keywords only? click this! ]</span>{% endif %}</h3>
 
 <div itemscope itemtype="http://schema.org/Person">
     <p>I am <span class="b" itemprop="name">Gergely Polonkai</span> (sometimes referred to as <span itemprop="nickname">W00d5t0ck</span> or <span itemprop="nickname">Polesz</span>), a <span class="b" itemprop="jobTitle">software developer, systems engineer and administrator</span>. I was born on <span class="b" itemprop="birthDate">7 March, 1983</span> in Budapest, Hungary. I spent my life moving here-and-there in the country, and finally settled in <span class="b" itemprop="address" itemscope itemtype="http://schema.org/Address"><span itemprop="locality">Budapest</span></span>. Although I have already found my mate for life, I am <span class="b">single</span> yet (living in a common-law marriage), being the proud father of a son and a daughter.</p>
@@ -20,7 +20,7 @@
 </div>
 
 <div id="keywords"><span id="keywords-close"></span><span id="keywords-list"></span></div>
-<div id="page-disclaimer">You can download the latest version of my resume at <a href="http://{{ site.domain }}{% url "basics:resume" %}">http://{{ site.domain }}{% url "basics:resume" %}</a>.</div>
+<div id="page-disclaimer">You can download the latest version of my resume at <a href="http://{{ site.domain }}{% url "basics:resumepdf" %}">http://{{ site.domain }}{% url "basics:resumepdf" %}</a>.</div>
 
 <script type="text/javascript">
 Array.prototype.unique = function() {
