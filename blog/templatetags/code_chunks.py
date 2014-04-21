@@ -25,12 +25,17 @@ class CodeFormatter(HtmlFormatter):
 
 def hilite(language, code):
     lexer = get_lexer_by_name(language)
-    formatter = CodeFormatter(style = SolarizedDarkStyle, linenos = False, cssclass = language + " code", noclasses = True)
+    formatter = CodeFormatter(
+            style = SolarizedDarkStyle,
+            linenos = False,
+            cssclass = language + " code",
+            noclasses = True
+        )
     return highlight(code, lexer, formatter)
 
-@register.filter(needs_autoescape=True)
+@register.filter(needs_autoescape = True)
 @stringfilter
-def remove_code_chunks(value, autoescape=None):
+def remove_code_chunks(value, autoescape = None):
     p = re.compile('\[\$ code:(?P<lang>[^:]+):(?P<slug>[^ ]+) \$\]')
     i = p.finditer(value)
     diff = 0
@@ -61,9 +66,9 @@ def remove_code_chunks(value, autoescape=None):
 
     return mark_safe(value)
 
-@register.filter(needs_autoescape=True)
+@register.filter(needs_autoescape = True)
 @stringfilter
-def insert_code_chunks(value, autoescape=None):
+def insert_code_chunks(value, autoescape = None):
     p = re.compile('\[\$ code:(?P<lang>[^:]+):(?P<slug>[^ ]+) \$\]')
     i = p.finditer(value)
     diff = 0
@@ -74,8 +79,12 @@ def insert_code_chunks(value, autoescape=None):
         start += diff
         end += diff
         try:
-            chunk = CodeChunk.objects.get(language = match.group('lang'), slug = match.group('slug'))
-            # TODO: This is an ugly hack, as it includes template logic in code. BAD!
+            chunk = CodeChunk.objects.get(
+                    language = match.group('lang'),
+                    slug = match.group('slug')
+                )
+            # TODO: This is an ugly hack, as it includes template logic in
+            # code. BAD!
             newstr = "<div class=\"code-chunk\">" + hilite(match.group('lang'), chunk.content) + "</div>"
         except CodeChunk.DoesNotExist:
             newstr = ""
@@ -94,7 +103,8 @@ def insert_code_chunks(value, autoescape=None):
         start += diff
         end += diff
 
-        # TODO: This is an ugly hack, as it includes template logic in code. BAD!
+        # TODO: This is an ugly hack, as it includes template logic in code.
+        # BAD!
         newstr = "<div class=\"code-chunk\">" + hilite(match.group('lang'), match.group('code')) + "</div>"
 
         newlen = len(newstr)
@@ -103,9 +113,9 @@ def insert_code_chunks(value, autoescape=None):
 
     return mark_safe(value)
 
-@register.filter(needs_autoescape=True)
+@register.filter(needs_autoescape = True)
 @stringfilter
-def syhilite(value, language, autoescape=None):
+def syhilite(value, language, autoescape = None):
     if language == "php":
         value = "<?php\n" + value
 

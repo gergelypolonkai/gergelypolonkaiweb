@@ -5,9 +5,9 @@ from taggit.managers import TaggableManager
 
 class Post(models.Model):
     user = models.ForeignKey(User)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add = True)
     title = models.CharField(max_length = 100)
-    slug = models.SlugField(editable=False, max_length = 100)
+    slug = models.SlugField(editable = False, max_length = 100)
     content = models.TextField()
     draft = models.BooleanField()
     tags = TaggableManager()
@@ -23,10 +23,10 @@ class Post(models.Model):
 
 class CodeChunk(models.Model):
     language = models.CharField(max_length = 20)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add = True)
     title = models.CharField(max_length = 100)
     slug = models.SlugField(editable = False, max_length = 100)
-    description = models.TextField(blank=True)
+    description = models.TextField(blank = True)
     content = models.TextField()
 
     def save(self, *args, **kwargs):

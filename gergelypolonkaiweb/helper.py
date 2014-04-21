@@ -7,12 +7,19 @@ import os
 from random import choice
 
 def randomheader(request):
-    header_file = choice(filter(lambda x: os.path.isfile(settings.HEADER_DIR + os.path.sep + x), os.listdir(settings.HEADER_DIR)))
+    header_file = choice(filter(
+            lambda x: os.path.isfile(
+                    settings.HEADER_DIR + os.path.sep + x
+                ),
+            os.listdir(settings.HEADER_DIR)
+        ))
     return {'header': header_file}
 
 def tagcloud(request):
     tagcloud = []
-    tagcloudlist = Tag.objects.annotate(ct=Count('taggit_taggeditem_items')).order_by('-ct')
+    tagcloudlist = Tag.objects.annotate(
+            ct = Count('taggit_taggeditem_items')
+        ).order_by('-ct')
 
     if (len(tagcloudlist) > 0):
         tmax = tagcloudlist[0].ct
@@ -26,9 +33,13 @@ def tagcloud(request):
 
             if (tagcount >= tmin):
                 size = int(floor((5.0 * (tagcount - tmin)) / (tmax - tmin)))
-                tagcloud.append({'name': cloudelement.name, 'slug': cloudelement.slug, 'size': size})
+                tagcloud.append({
+                        'name': cloudelement.name,
+                        'slug': cloudelement.slug,
+                        'size': size
+                    })
 
-        tagcloud.sort(key=itemgetter('name'))
+        tagcloud.sort(key = itemgetter('name'))
 
     return {'tagcloud': tagcloud}
 

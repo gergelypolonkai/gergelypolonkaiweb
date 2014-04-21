@@ -13,10 +13,10 @@ def listing(request, tag, year, month, day, page):
     view = 'index'
 
     if (tag == None):
-        view = "index"
+        view = 'index'
     else:
         kwargs['tags__slug'] = tag
-        view = "tag"
+        view = 'tag'
 
     if (year != None):
         kwargs['created_at__year'] = year
@@ -40,7 +40,11 @@ def listing(request, tag, year, month, day, page):
     if paginator.num_pages > 1:
         view = view + 'page'
 
-    return render(request, 'blog/listing.html', { 'posts': posts, 'tag': tag, 'view': "blog:" + view })
+    return render(request, 'blog/listing.html', {
+            'posts': posts,
+            'tag': tag,
+            'view': "blog:" + view
+        })
 
 def index(request):
     return listing(request, None, None, None, None, 1)
@@ -61,7 +65,13 @@ def datepage(request, year, month, day, page):
     return listing(request, None, year, month, day, page)
 
 def read(request, year, month, day, slug):
-    post = get_object_or_404(Post, created_at__year=int(year), created_at__month=int(month), created_at__day=int(day), slug=slug, draft=False)
+    post = get_object_or_404(Post,
+            created_at__year = int(year),
+            created_at__month = int(month),
+            created_at__day = int(day),
+            slug = slug,
+            draft = False
+        )
     next_post = Post.objects.filter(created_at__gt = post.created_at).order_by('created_at')[0:1]
     prev_post = Post.objects.filter(created_at__lt = post.created_at).order_by('-created_at')[0:1]
 
@@ -75,10 +85,14 @@ def read(request, year, month, day, slug):
     else:
         prev_post = prev_post[0]
 
-    return render(request, 'blog/view.html', {'post': post, 'prev_post': prev_post, 'next_post': next_post})
+    return render(request, 'blog/view.html', {
+            'post': post,
+            'prev_post': prev_post,
+            'next_post': next_post,
+        })
 
 def codechunk(request, language, slug):
-    chunk = get_object_or_404(CodeChunk, language=language, slug=slug)
+    chunk = get_object_or_404(CodeChunk, language = language, slug = slug)
     return render(request, 'blog/code-chunk.html', {'codechunk': chunk})
 
 def feed(request):
