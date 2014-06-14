@@ -13,7 +13,7 @@ def listing(request, tag, page):
         view = "index"
     else:
         post_list = Post.objects.filter(tags__slug = tag, draft = False)
-        view = "tagage"
+        view = "tag"
 
     paginator = Paginator(post_list.order_by('-created_at'), 10)
 
