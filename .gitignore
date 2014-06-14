@@ -1,3 +1,5 @@
+!/static/.gitkeep
+/static/*
 secret.key
 *.pyc
 *.sw?
