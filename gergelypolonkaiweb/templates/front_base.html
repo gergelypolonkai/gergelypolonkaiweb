@@ -42,7 +42,9 @@
             </div>
             <div id="content-padding"></div>
             <div id="menu">
+{% if tagcloud|length > 0 %}
                 <div id="tagcloud-button"><img alt="" src="{% static "images/tagcloud.png" %}" /></div>
+{% endif %}
                 <ul>
                     <li {% if view_name|slice:"-7:" == ".resume" %} class="active"{% endif %}><a href="{% url 'basics:resume' %}">Resume</a></li>
                     <li {% if view_name|slice:":5" == "blog." %} class="active"{% endif %}><a href="{% url 'blog:index' %}">Blog</a></li>
