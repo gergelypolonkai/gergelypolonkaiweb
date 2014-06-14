@@ -33,6 +33,9 @@ def tagcloud(request):
     return {'tagcloud': tagcloud}
 
 def viewname(request):
-    return {
-        'view_name': request.view_name,
-    }
+    if hasattr(request, 'view_name'):
+        return {
+            'view_name': request.view_name,
+        }
+    else:
+        return {}
