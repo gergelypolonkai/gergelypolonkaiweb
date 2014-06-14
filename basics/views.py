@@ -13,3 +13,15 @@ def about(request):
 
 def disclaimer(request):
     return render(request, 'basics/disclaimer.html', {})
+
+def notfound(request):
+    return render(request, 'basics/notfound.html', {})
+
+def serverror(request):
+    return render(request, 'basics/serverror.html', {})
+
+def forbidden(request):
+    return render(request, 'basics/forbidden.html', {})
+
+def badrequest(request):
+    return render(request, 'basics/badrequest.html', {})

@@ -3,6 +3,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+handler404 = 'basics.views.notfound'
+handler500 = 'basics.views.serverror'
+handler403 = 'basics.views.forbidden'
+handler400 = 'basics.views.badrequest'
+
 urlpatterns = patterns('',
     # Examples:
     url(r'^$',                      'blog.views.mainpage',          name='home'),
