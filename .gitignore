@@ -1,5 +1,7 @@
 !/static/.gitkeep
 /static/*
+gergelypolonkaiweb/server.log
+/venv
 secret.key
 *.pyc
 *.sw?
