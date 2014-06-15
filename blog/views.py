@@ -1,6 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from blog.models import Post, CodeChunk
+from django.core.urlresolvers import reverse
+import datetime
+import pytz
+from django.templatetags.static import static
 
 def mainpage(request):
     last_posts = Post.objects.filter(draft = False).order_by('-created_at')[:5]
@@ -96,5 +100,21 @@ def codechunk(request, language, slug):
     return render(request, 'blog/code-chunk.html', {'codechunk': chunk})
 
 def feed(request):
-    return render(request, 'blog/feed.xml', {})
+    latest_post = Post.objects.filter(draft = False).order_by('-created_at')[0:1]
+
+    if not latest_post:
+        latest_date = datetime.datetime(1983, 3, 7, 11, 54, 45, 0, pytz.timezone('Europe/Budapest'))
+    else:
+        latest_date = latest_post[0].created_at
+
+    posts = Post.objects.order_by('-created_at')[:10]
+
+    return render(request, 'blog/feed.xml', {
+                    'site_url': request.build_absolute_uri(reverse('home')),
+                    'profile_pic': request.build_absolute_uri(static('images/profile.png')),
+                    'last_build_date': latest_date.strftime('%a, %d %b %Y %T %z'),
+                    'posts': posts,
+                },
+            content_type = 'application/xml'
+        )
 

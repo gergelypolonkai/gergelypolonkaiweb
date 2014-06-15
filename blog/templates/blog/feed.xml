@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+{% load static from staticfiles %}
+{% load get_post_link from blog_link %}
+<rss version="2.0">
+    <channel>
+        <title>Gergely Polonkai</title>
+        <description>Gergely Polonkai’s Blog</description>
+        <link>{{ site_url }}</link>
+{% comment %}
+The <pubDate> element defines the last publication date for the content in the RSS feed.
+The <lastBuildDate> element defines the last-modified date of the content of the feed.
+
+TODO: Incorporate a modified_at field in the blog. These fields must depend on them.
+{% endcomment %}
+        <lastBuildDate>{{ last_build_date }}</lastBuildDate>
+        <pubDate>{{ last_build_date }}</pubDate>
+        <ttl>7200</ttl>
+        <language>en</language>
+        <image>
+            <title>Gergely Polonkai</title>
+            <url>{{ profile_pic }}</url>
+            <link>{{ site_url }}</link>
+        </image>
+{% for post in posts %}
+        <item>
+            <title><![CDATA[ {{ post.title }} ]]></title>
+            <link>{% get_post_link post %}</link>
+            <comments>{% get_post_link post %}#comments</comments>
+            <pubDate>{{ post.created_at_rss }}</pubDate>
+            <description><![CDATA[ {{ post.content|safe }} ]]></description>
+            <guid>{% get_post_link post %}</guid>
+        </item>
+{% endfor %}
+    </channel>
+</rss>

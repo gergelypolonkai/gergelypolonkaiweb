@@ -15,7 +15,7 @@
         <link rel="stylesheet" type="text/css" href="{% static "css/code.css" %}" media="screen" />
         {% endblock %}
         {% endcompress %}
-        <link rel="alternate" type="application/rss+xml" title="Gergely Polonkai's Blog - RSS Feed" href="{{ app.request.scheme }}://{{ app.request.host }}{% url 'blog:feed' %}" />
+        <link rel="alternate" type="application/rss+xml" title="Gergely Polonkai's Blog - RSS Feed" href="//{{ request.META.SERVER_NAME }}{% url 'blog:feed' %}" />
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     </head>
     <body>
