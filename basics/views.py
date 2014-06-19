@@ -2,14 +2,21 @@ from django.shortcuts import render
 from django.contrib.sites.models import get_current_site
 from django.http import HttpResponse
 from django.template.loader import render_to_string
+from django.core.urlresolvers import reverse
 from StringIO import StringIO
 from xhtml2pdf import pisa
 
 def googlevalidator(request):
     return HttpResponse('')
 
+def resumelink(request):
+    return request.build_absolute_uri(reverse('basics:resumepdf'))
+
 def resumepdf(request):
-    body = render_to_string('basics/resume.html', { 'site': get_current_site(request), 'pdf': True })
+    body = render_to_string('basics/resume.html', {
+            'resume_link': resumelink(request),
+            'pdf': True
+        })
     dst = StringIO()
     pdf = pisa.CreatePDF(body, dst)
     pdf_data = dst.getvalue()
@@ -21,7 +28,9 @@ def resumepdf(request):
     return HttpResponse('We had some errors: <pre>%s</pre>' % escape(html))
 
 def resume(request):
-    return render(request, 'basics/resume.html', { 'site': get_current_site(request) })
+    return render(request, 'basics/resume.html', {
+            'resume_link': resumelink(request)
+        })
 
 def about(request):
     return render(request, 'basics/about.html', {})
