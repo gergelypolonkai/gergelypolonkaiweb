@@ -18,7 +18,7 @@ def resumepdf(request):
     if not pdf.err:
         return HttpResponse(pdf_data, mimetype = 'application/pdf')
 
-    return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
+    return HttpResponse('We had some errors: <pre>%s</pre>' % escape(html))
 
 def resume(request):
     return render(request, 'basics/resume.html', { 'site': get_current_site(request) })
