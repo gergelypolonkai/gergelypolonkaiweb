@@ -23,7 +23,7 @@ def resumepdf(request):
     dst.close()
 
     if not pdf.err:
-        return HttpResponse(pdf_data, mimetype = 'application/pdf')
+        return HttpResponse(pdf_data, content_type = 'application/pdf')
 
     return HttpResponse('We had some errors: <pre>%s</pre>' % escape(html))
 
