@@ -20,8 +20,6 @@ def resumepdf(request):
 
     return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
 
-    return render(request, 'basics/resume.html', { 'site': get_current_site(request), 'pdf': True })
-
 def resume(request):
     return render(request, 'basics/resume.html', { 'site': get_current_site(request) })
 
