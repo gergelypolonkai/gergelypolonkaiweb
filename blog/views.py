@@ -16,7 +16,7 @@ def listing(request, tag, year, month, day, page):
         view = "index"
     else:
         kwargs['tags__slug'] = tag
-        view = "tagpage"
+        view = "tag"
 
     if (year != None):
         kwargs['created_at__year'] = year
