@@ -1,19 +1,19 @@
 {% if list.paginator.num_pages > 1 %}
     <div class="paginator">
         {% if list.number > 1 %}
-            <a href="{% url view %}">First</a>
+            <a href="{% url view tag=tag %}">First</a>
         {% endif %}
         {% if list.has_previous and list.number != 2 %}
-            <a href="{% url view|add:"page" list.previous_page_number %}">Previous</a>
+            <a href="{% url view 'page'=list.previous_page_number 'tag'=tag %}">Previous</a>
         {% endif %}
         {% for i in posts.paginator.page_range %}
-            {% if list.number != i %}<a href="{% url view|add:"page" i %}">{% endif %}{{ i }}{% if list.number != i %}</a>{% endif %}
+            {% if list.number != i %}<a href="{% url view 'page'=i %}">{% endif %}{{ i }}{% if list.number != i %}</a>{% endif %}
         {% endfor %}
         {% if list.has_next and list.number != list.paginator.num_pages|add:-1 %}
-            <a href="{% url view|add:"page" list.next_page_number %}">Next</a>
+            <a href="{% url view 'page'=list.next_page_number 'tag'=tag %}">Next</a>
         {% endif %}
         {% if list.number < list.paginator.num_pages %}
-            <a href="{% url view|add:"page" list.paginator.num_pages %}">Last</a>
+            <a href="{% url view 'page'=list.paginator.num_pages 'tag'=tag %}">Last</a>
         {% endif %}
     </div>
 {% endif %}
