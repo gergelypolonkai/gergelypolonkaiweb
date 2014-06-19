@@ -58,7 +58,20 @@ def datepage(request, year, month, day, page):
 
 def read(request, year, month, day, slug):
     post = get_object_or_404(Post, created_at__year=int(year), created_at__month=int(month), created_at__day=int(day), slug=slug, draft=False)
-    return render(request, 'blog/view.html', {'post': post})
+    next_post = Post.objects.filter(created_at__gt = post.created_at).order_by('created_at')[0:1]
+    prev_post = Post.objects.filter(created_at__lt = post.created_at).order_by('-created_at')[0:1]
+
+    if not next_post:
+        next_post = None
+    else:
+        next_post = next_post[0]
+
+    if not prev_post:
+        prev_post = None
+    else:
+        prev_post = prev_post[0]
+
+    return render(request, 'blog/view.html', {'post': post, 'prev_post': prev_post, 'next_post': next_post})
 
 def codechunk(request, language, slug):
     chunk = get_object_or_404(CodeChunk, language=language, slug=slug)

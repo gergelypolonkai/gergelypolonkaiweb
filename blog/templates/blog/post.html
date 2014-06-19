@@ -29,4 +29,10 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+{% if prev_post %}
+Previous: <a href="{% url 'blog:read' prev_post.created_at.year prev_post.created_at.month prev_post.created_at.day prev_post.slug %}">{{ prev_post.title }}</a>
+{% endif %}
+{% if next_post %}
+Next: <a href="{% url 'blog:read' next_post.created_at.year next_post.created_at.month next_post.created_at.day next_post.slug %}">{{ next_post.title }}</a>
+{% endif %}
 {% endif %}
