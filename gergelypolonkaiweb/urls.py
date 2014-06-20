@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
-
+from django.views.generic import TemplateView
 from django.contrib import admin
+
 admin.autodiscover()
 
 handler404 = 'basics.views.notfound'
@@ -12,6 +13,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$',                      'blog.views.mainpage',          name='home'),
     url(r'^google150e54bda5f96d97', 'basics.views.googlevalidator'),
+    url(r'^robots\.txt$',           TemplateView.as_view(template_name='robots.txt', content_type = 'text/plain')),
     url(r'^blog/',                  include('blog.urls',            namespace='blog')),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/',             include('django.contrib.admindocs.urls')),
