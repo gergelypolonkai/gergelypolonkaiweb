@@ -10,7 +10,8 @@ def listing(request, tag, year, month, day, page):
     kwargs = {}
     kwargs['draft'] = False
 
-    view = index
+    view = 'index'
+
     if (tag == None):
         view = "index"
     else:
@@ -36,7 +37,10 @@ def listing(request, tag, year, month, day, page):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
-    return render(request, 'blog/listing.html', { 'posts': posts, 'view': "blog:" + view })
+    if paginator.num_pages > 1:
+        view = view + 'page'
+
+    return render(request, 'blog/listing.html', { 'posts': posts, 'tag': tag, 'view': "blog:" + view })
 
 def index(request):
     return listing(request, None, None, None, None, 1)

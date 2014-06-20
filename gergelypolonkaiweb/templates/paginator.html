@@ -1,19 +1,39 @@
 {% if list.paginator.num_pages > 1 %}
     <div class="paginator">
         {% if list.number > 1 %}
-            <a href="{% url view tag=tag %}">First</a>
+            {% if tag %}
+            <a href="{% url view page=1 tag=tag %}">First</a>
+            {% else %}
+            <a href="{% url view page=1 %}">First</a>
+            {% endif %}
         {% endif %}
         {% if list.has_previous and list.number != 2 %}
-            <a href="{% url view 'page'=list.previous_page_number 'tag'=tag %}">Previous</a>
+            {% if tag %}
+            <a href="{% url view page=list.previous_page_number tag=tag %}">Previous</a>
+            {% else %}
+            <a href="{% url view page=list.previous_page_number %}">Previous</a>
+            {% endif %}
         {% endif %}
         {% for i in posts.paginator.page_range %}
-            {% if list.number != i %}<a href="{% url view 'page'=i %}">{% endif %}{{ i }}{% if list.number != i %}</a>{% endif %}
+            {% if tag %}
+            {% if list.number != i %}<a href="{% url view page=i tag=tag %}">{% endif %}{{ i }}{% if list.number != i %}</a>{% endif %}
+            {% else %}
+            {% if list.number != i %}<a href="{% url view page=i %}">{% endif %}{{ i }}{% if list.number != i %}</a>{% endif %}
+            {% endif %}
         {% endfor %}
         {% if list.has_next and list.number != list.paginator.num_pages|add:-1 %}
-            <a href="{% url view 'page'=list.next_page_number 'tag'=tag %}">Next</a>
+            {% if tag %}
+            <a href="{% url view page=list.next_page_number tag=tag %}">Next</a>
+            {% else %}
+            <a href="{% url view page=list.next_page_number %}">Next</a>
+            {% endif %}
         {% endif %}
         {% if list.number < list.paginator.num_pages %}
-            <a href="{% url view 'page'=list.paginator.num_pages 'tag'=tag %}">Last</a>
+            {% if tag %}
+            <a href="{% url view page=list.paginator.num_pages tag=tag %}">Last</a>
+            {% else %}
+            <a href="{% url view page=list.paginator.num_pages %}">Last</a>
+            {% endif %}
         {% endif %}
     </div>
 {% endif %}
