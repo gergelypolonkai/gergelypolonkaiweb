@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.sites.models import get_current_site
 from django.http import HttpResponse
 from django.template.loader import render_to_string
+from django.template.response import TemplateResponse
 from django.core.urlresolvers import reverse
 from StringIO import StringIO
 from xhtml2pdf import pisa
@@ -39,17 +40,13 @@ def disclaimer(request):
     return render(request, 'basics/disclaimer.html', {})
 
 def notfound(request):
-    body = render_to_string('basics/notfound.html', {})
-    return HttpResponse(body, status_code = 404)
+    return TemplateResponse(request, 'basics/notfound.html', status = 404).render()
 
 def serverror(request):
-    body = render_to_string('basics/serverror.html', {})
-    return HttpResponse(body, status_code = 500)
+    return TemplateResponse(request, 'basics/serverror.html', status = 500).render()
 
 def forbidden(request):
-    body = render_to_string('basics/forbidden.html', {})
-    return HttpResponse(body, status_code = 403)
+    return TemplateResponse(request, 'basics/forbidden.html', status = 403).render()
 
 def badrequest(request):
-    body = render_to_string('basics/badrequest.html', {})
-    return HttpResponse(body, status_code = 400)
+    return TemplateResponse(request, 'basics/badrequest.html', status = 400).render()
