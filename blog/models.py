@@ -21,6 +21,9 @@ class Post(models.Model):
 
         super(Post, self).save(*args, **kwargs)
 
+    def created_at_rss(self):
+        return self.created_at.strftime('%a, %d %b %Y %T %z')
+
 class CodeChunk(models.Model):
     language = models.CharField(max_length = 20)
     created_at = models.DateTimeField(auto_now_add = True)
