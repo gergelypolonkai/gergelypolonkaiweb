@@ -76,8 +76,8 @@ def read(request, year, month, day, slug):
             slug = slug,
             draft = False
         )
-    next_post = Post.objects.filter(created_at__gt = post.created_at).order_by('created_at')[0:1]
-    prev_post = Post.objects.filter(created_at__lt = post.created_at).order_by('-created_at')[0:1]
+    next_post = Post.objects.filter(created_at__gt = post.created_at, draft = False).order_by('created_at')[0:1]
+    prev_post = Post.objects.filter(created_at__lt = post.created_at, draft = False).order_by('-created_at')[0:1]
 
     if not next_post:
         next_post = None
