@@ -1,7 +1,7 @@
 !/static/.gitkeep
 /static/*
 gergelypolonkaiweb/settings_local.py
-gergelypolonkaiweb/server.log
+server.log
 /venv
 secret.key
 *.pyc
