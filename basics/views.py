@@ -17,7 +17,7 @@ def resumepdf(request):
     body = render_to_string('basics/resume.html', {
             'resume_link': resumelink(request),
             'pdf': True
-        })
+        }).replace('<span class="at-obfuscation"></span>', '@')
     dst = StringIO()
     pdf = pisa.CreatePDF(body, dst)
     pdf_data = dst.getvalue()
