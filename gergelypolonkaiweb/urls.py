@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from django.contrib import admin
+from django.http import HttpResponse
 
 admin.autodiscover()
 
@@ -17,7 +18,7 @@ urlpatterns = patterns('',
         ),
     url(
             r'^google150e54bda5f96d97',
-            'basics.views.googlevalidator'
+            lambda r: HttpResponse("", mimetype="text/plain")
         ),
     url(
             r'^robots\.txt$',

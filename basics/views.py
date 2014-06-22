@@ -7,9 +7,6 @@ from django.core.urlresolvers import reverse
 from StringIO import StringIO
 from xhtml2pdf import pisa
 
-def googlevalidator(request):
-    return HttpResponse('')
-
 def resumelink(request):
     return request.build_absolute_uri(reverse('basics:resumepdf'))
 
