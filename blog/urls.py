@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, url
+from django.views.generic import RedirectView
 from blog import views
 
 urlpatterns = patterns('',
@@ -43,8 +44,12 @@ urlpatterns = patterns('',
             name = 'codechunk'
         ),
     url(
-            r'^feed$',
+            r'^atom.xml$',
             views.feed,
             name = 'feed'
+        ),
+    url(
+            r'^feed$',
+            RedirectView.as_view(pattern_name='blog:feed')
         ),
 )
