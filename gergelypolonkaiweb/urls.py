@@ -25,6 +25,10 @@ urlpatterns = patterns('',
             TemplateView.as_view(template_name = 'robots.txt', content_type = 'text/plain')
         ),
     url(
+            r'^pinterest-26239.html$',
+            TemplateView.as_view(template_name = 'pinterest-26239.html')
+        ),
+    url(
             r'^blog/',
             include(
                     'blog.urls',
