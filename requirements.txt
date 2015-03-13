@@ -8,3 +8,5 @@ html5lib>=0.90
 python-memcached>=1.43
 reportlab>=2.2
 xhtml2pdf>=0.0.5
+gunicorn
+setproctitle
