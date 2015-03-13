@@ -6,6 +6,11 @@
         Purpose of the stylesheet follows.
 */
 
+code {
+    font-family: monospace;
+    background-color: #ddd;
+}
+
 .code-chunk {
     background-color: #b5b5b5;
     padding: 10px;
