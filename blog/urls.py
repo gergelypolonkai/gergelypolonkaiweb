@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, url
 from django.views.generic import RedirectView
+from django.core.urlresolvers import reverse_lazy
+
 from blog import views
 
 urlpatterns = patterns('',
@@ -50,6 +52,6 @@ urlpatterns = patterns('',
         ),
     url(
             r'^feed$',
-            RedirectView.as_view(pattern_name='blog:feed')
+            RedirectView.as_view(url=reverse_lazy('blog:feed'))
         ),
 )
